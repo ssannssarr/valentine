@@ -63,13 +63,45 @@
           </div>
 
           <div class="actions">
+            <button class="btn btn-primary" id="hugBtn" type="button">Give me a virtual hug 🤍</button>
             <a class="btn btn-secondary" href="index.html">Back</a>
           </div>
 
           <p class="hint">This page now belongs to our yes.</p>
         </section>
+
+        <div class="hug-message" id="hugMessage" hidden aria-live="polite" aria-atomic="true">
+          <div class="hug-message-card glass">
+            <p>
+              If I were there right now,<br />
+              I'd hug you for real.
+              <br /><br />
+              Until then...
+              <br /><br />
+              This little website will have to do. ❤️
+            </p>
+          </div>
+        </div>
+
+        <section class="ending-screen" id="endingScreen" hidden aria-live="polite" aria-atomic="true">
+          <div class="ending-shell glass">
+            <div class="ending-heart">❤️</div>
+            <h1>Happy Girlfriend's Day</h1>
+            <p class="ending-copy">Thank you for saying "Yes"<br />every single day.</p>
+            <p class="ending-copy ending-signoff">I love you,<br />Sann</p>
+            <p class="ending-sub">Made with ❤️<br />by your nerd boyfriend.</p>
+            <p class="ending-psa" id="finalPsa" hidden>
+              P.S.<br />
+              Now close this page...<br /><br />
+              and come get your real hug. 🤍
+            </p>
+          </div>
+        </section>
       </main>
     </div>
+
+    <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+    <div class="confetti-layer" aria-hidden="true" id="confettiLayer"></div>
 
     <script src="script.js"></script>
   </body>
