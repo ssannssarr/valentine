@@ -5,6 +5,8 @@ const loveNote = document.getElementById("loveNote");
 const hintText = document.getElementById("hintText");
 const yesBtn = document.getElementById("yesBtn");
 const maybeBtn = document.getElementById("maybeBtn");
+const hero = document.querySelector(".hero");
+const replyPage = document.getElementById("replyPage");
 
 const messages = [
   "You are the best part of my day, and now this page knows it too.",
@@ -92,10 +94,11 @@ function pickRandom(list) {
 }
 
 yesBtn.addEventListener("click", () => {
+  hero.hidden = true;
+  replyPage.hidden = false;
   const note = pickRandom(messages);
   loveNote.textContent = note;
-  hintText.textContent = "That was the right answer. It always was.";
-  showToast("Yes accepted. Happiness levels rising.");
+  showToast("Yes accepted. Opening your love note.");
   burstHearts(26);
   createConfettiBurst();
 });
