@@ -5,16 +5,7 @@ const loveNote = document.getElementById("loveNote");
 const hintText = document.getElementById("hintText");
 const yesBtn = document.getElementById("yesBtn");
 const maybeBtn = document.getElementById("maybeBtn");
-const hero = document.querySelector(".hero");
-const replyPage = document.getElementById("replyPage");
-
-const messages = [
-  "You are the best part of my day, and now this page knows it too.",
-  "A perfect yes looks even better in pink.",
-  "Consider this your official invitation to be adored.",
-  "My favorite place is wherever you are.",
-  "This landing page was built for one answer, and it is smiling already."
-];
+const pageLoader = document.getElementById("pageLoader");
 
 const teasingMessages = [
   "The button is patient. Your answer can be legendary.",
@@ -22,6 +13,10 @@ const teasingMessages = [
   "Take your time. The hearts are on standby.",
   "The answer is still yes-shaped."
 ];
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
 
 function showToast(text) {
   toast.textContent = text;
@@ -89,26 +84,28 @@ function createConfettiBurst() {
   }
 }
 
-function pickRandom(list) {
-  return list[Math.floor(Math.random() * list.length)];
+if (yesBtn && pageLoader) {
+  yesBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    pageLoader.classList.add("show");
+    showToast("Loading your love note...");
+    burstHearts(16);
+    createConfettiBurst();
+
+    window.setTimeout(() => {
+      window.location.href = yesBtn.href;
+    }, 900);
+  });
 }
 
-yesBtn.addEventListener("click", () => {
-  hero.hidden = true;
-  replyPage.hidden = false;
-  const note = pickRandom(messages);
-  loveNote.textContent = note;
-  showToast("Yes accepted. Opening your love note.");
-  burstHearts(26);
-  createConfettiBurst();
-});
-
-maybeBtn.addEventListener("click", () => {
-  const teasing = pickRandom(teasingMessages);
-  hintText.textContent = teasing;
-  showToast(teasing);
-  burstHearts(10);
-});
+if (maybeBtn) {
+  maybeBtn.addEventListener("click", () => {
+    const teasing = pickRandom(teasingMessages);
+    hintText.textContent = teasing;
+    showToast(teasing);
+    burstHearts(10);
+  });
+}
 
 setInterval(() => {
   burstHearts(2);
